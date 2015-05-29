@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C2055" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bbx-3s-2IS">
+                                <rect key="frame" x="58" y="59" width="484" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-fy-XuY">
+                                <rect key="frame" x="58" y="117" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.1173854185" green="1" blue="0.064216489069999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="3eU-f3-BeM"/>
+                                </constraints>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addName:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azX-wP-tfN"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="63J-MG-T3H">
+                                <rect key="frame" x="0.0" y="170" width="600" height="435"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aM0-QH-USw">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZlG-5W-pCb">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="gdw-mf-mrV"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zQu-Un-9Hj"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ug6-Wy-Cn4">
+                                <rect key="frame" x="428" y="117" width="114" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="E7d-qU-piD"/>
+                                </constraints>
+                                <state key="normal" title="Randomize">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="randomize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XUa-Hz-qMz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="63J-MG-T3H" secondAttribute="bottom" constant="-5" id="8oN-zW-ZPC"/>
+                            <constraint firstItem="bbx-3s-2IS" firstAttribute="centerX" secondItem="63J-MG-T3H" secondAttribute="centerX" id="Bng-Sa-cu7"/>
+                            <constraint firstAttribute="trailing" secondItem="63J-MG-T3H" secondAttribute="trailing" id="DQh-ac-Ydr"/>
+                            <constraint firstItem="bbx-3s-2IS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39" id="IoQ-va-mq8"/>
+                            <constraint firstItem="Ug6-Wy-Cn4" firstAttribute="baseline" secondItem="qL1-fy-XuY" secondAttribute="baseline" id="MBt-BX-glC"/>
+                            <constraint firstItem="bbx-3s-2IS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" id="OMw-2y-e9U"/>
+                            <constraint firstAttribute="trailing" secondItem="Ug6-Wy-Cn4" secondAttribute="trailing" constant="58" id="ZMa-kx-oXC"/>
+                            <constraint firstItem="63J-MG-T3H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cYP-ij-QwM"/>
+                            <constraint firstItem="qL1-fy-XuY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="58" id="ctM-vh-dIE"/>
+                            <constraint firstItem="qL1-fy-XuY" firstAttribute="top" secondItem="bbx-3s-2IS" secondAttribute="bottom" constant="28" id="jmW-n2-eHA"/>
+                            <constraint firstItem="63J-MG-T3H" firstAttribute="top" secondItem="qL1-fy-XuY" secondAttribute="bottom" constant="23" id="l4z-Ha-u1r"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addButton" destination="qL1-fy-XuY" id="hPW-JI-q0N"/>
+                        <outlet property="collectionView" destination="63J-MG-T3H" id="Qgd-Hj-GgU"/>
+                        <outlet property="randomizeButton" destination="Ug6-Wy-Cn4" id="LTn-HC-N6Y"/>
+                        <outlet property="textField" destination="bbx-3s-2IS" id="EgV-p9-RoN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
