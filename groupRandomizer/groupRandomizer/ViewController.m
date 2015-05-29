@@ -11,7 +11,7 @@
 #import "NameController.h"
 #import "Name.h"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -39,7 +39,8 @@
     
     [[NameController sharedInstance]addNameWithNameString:self.textField.text];
     
-    [self.collectionView reloadData]; 
+    [self.collectionView reloadData];
+    
 }
 
 - (IBAction)randomize:(id)sender {
@@ -90,6 +91,31 @@
     
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete Name?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        Name *name = [[NameController sharedInstance].names objectAtIndex:indexPath.item];
+        
+        [[NameController sharedInstance]removeName:name];
+        
+        [collectionView reloadData];
+        
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+}
+
 
 
 
