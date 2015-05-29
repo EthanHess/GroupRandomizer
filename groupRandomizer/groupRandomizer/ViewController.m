@@ -45,7 +45,9 @@
 
 - (IBAction)randomize:(id)sender {
     
+    [[NameController sharedInstance]shuffle:[NameController sharedInstance].names];
     
+    [self.collectionView reloadData]; 
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,7 +87,7 @@
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    Name *name = [[NameController sharedInstance].names objectAtIndex:indexPath.row];
+    Name *name = [[NameController sharedInstance].names objectAtIndex:indexPath.item];
     
     cell.nameLabel.text = name.nameString;
     

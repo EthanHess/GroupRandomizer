@@ -49,6 +49,26 @@
     [self synchronize];
 }
 
+- (NSArray *)shuffle:(NSArray *)array {
+    
+    NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];
+    
+    NSUInteger count = [newArray count];
+    
+    for (NSUInteger i = 0; i < count; i++) {
+       
+        NSInteger remainingCount = count - i;
+        
+        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t)remainingCount);
+        
+        [newArray exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+        
+    }
+    
+    return [NSArray arrayWithArray:newArray];
+}
+
+
 - (void)synchronize {
     
     [[Stack sharedInstance].managedObjectContext save:NULL];

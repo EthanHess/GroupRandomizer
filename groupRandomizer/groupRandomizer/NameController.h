@@ -19,4 +19,6 @@
 
 - (void)removeName:(Name *)name;
 
+- (NSArray *)shuffle:(NSArray *)array; 
+
 @end
