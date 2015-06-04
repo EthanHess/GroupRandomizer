@@ -26,27 +26,35 @@
         self.circleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.circleView.layer.cornerRadius = self.frame.size.width / 2;
         self.circleView.backgroundColor = [UIColor redColor];
-        [self addSubview:self.circleView];
+        [self.contentView addSubview:self.circleView];
         
-        [self layoutSubviews];
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.frame.size.height / 2 - self.nameLabel.frame.size.height / 2, self.frame.size.width - 20, self.frame.size.height / 4)];
+        self.nameLabel.backgroundColor = [UIColor clearColor];
+        self.nameLabel.textColor = [UIColor whiteColor];
+        self.nameLabel.numberOfLines = 1;
+        self.nameLabel.textAlignment = NSTextAlignmentCenter;
+        self.nameLabel.font = [UIFont fontWithName:@"Chalkduster" size:12];
+        [self.circleView addSubview:self.nameLabel];
+        
+//        [self layoutSubviews];
     }
     
     return self;
     
 }
 
-- (void)layoutSubviews {
-    
-    
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.frame.size.height / 2 - self.nameLabel.frame.size.height / 2, self.frame.size.width - 20, self.frame.size.height / 4)];
-    self.nameLabel.backgroundColor = [UIColor clearColor];
-    self.nameLabel.textColor = [UIColor whiteColor];
-    self.nameLabel.numberOfLines = 1;
-    self.nameLabel.textAlignment = NSTextAlignmentCenter;
-    self.nameLabel.font = [UIFont fontWithName:@"Chalkduster" size:12];
-    [self addSubview:self.nameLabel];
-    
-}
+//- (void)layoutSubviews {
+//    
+//    
+//    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.frame.size.height / 2 - self.nameLabel.frame.size.height / 2, self.frame.size.width - 20, self.frame.size.height / 4)];
+//    self.nameLabel.backgroundColor = [UIColor clearColor];
+//    self.nameLabel.textColor = [UIColor whiteColor];
+//    self.nameLabel.numberOfLines = 1;
+//    self.nameLabel.textAlignment = NSTextAlignmentCenter;
+//    self.nameLabel.font = [UIFont fontWithName:@"Chalkduster" size:12];
+//    [self addSubview:self.nameLabel];
+//    
+//}
 
 
 @end
