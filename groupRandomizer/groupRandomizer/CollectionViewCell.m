@@ -23,38 +23,23 @@
     
     if (self) {
         
-        self.circleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        self.circleView.layer.cornerRadius = self.frame.size.width / 2;
-        self.circleView.backgroundColor = [UIColor redColor];
-        [self.contentView addSubview:self.circleView];
         
-        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.frame.size.height / 2 - self.nameLabel.frame.size.height / 2, self.frame.size.width - 20, self.frame.size.height / 4)];
-        self.nameLabel.backgroundColor = [UIColor clearColor];
+        self.nameLabel = [[UILabel alloc] initWithFrame:self.bounds];
+        self.nameLabel.layer.cornerRadius = self.frame.size.height / 2;
+        self.nameLabel.backgroundColor = [UIColor blueColor];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.nameLabel.numberOfLines = 1;
         self.nameLabel.textAlignment = NSTextAlignmentCenter;
         self.nameLabel.font = [UIFont fontWithName:@"Chalkduster" size:12];
-        [self.circleView addSubview:self.nameLabel];
-        
-//        [self layoutSubviews];
+        self.nameLabel.layer.masksToBounds = YES;
+        [self addSubview:self.nameLabel];
+
     }
     
     return self;
     
 }
 
-//- (void)layoutSubviews {
-//    
-//    
-//    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.frame.size.height / 2 - self.nameLabel.frame.size.height / 2, self.frame.size.width - 20, self.frame.size.height / 4)];
-//    self.nameLabel.backgroundColor = [UIColor clearColor];
-//    self.nameLabel.textColor = [UIColor whiteColor];
-//    self.nameLabel.numberOfLines = 1;
-//    self.nameLabel.textAlignment = NSTextAlignmentCenter;
-//    self.nameLabel.font = [UIFont fontWithName:@"Chalkduster" size:12];
-//    [self addSubview:self.nameLabel];
-//    
-//}
 
 
 @end

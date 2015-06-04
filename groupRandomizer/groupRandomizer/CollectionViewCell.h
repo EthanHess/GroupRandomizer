@@ -10,7 +10,6 @@
 
 @interface CollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIView *circleView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
 @end

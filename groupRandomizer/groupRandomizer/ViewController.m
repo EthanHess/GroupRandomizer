@@ -70,6 +70,12 @@ static int numberOfPeopleInGroup = 2;
     return circleSize;
 }
 
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    CGSize itemSize = CGSizeMake((_screenWidth /numberOfPeopleInGroup) - 6 , ((_screenHeight - 64) / 5) / 2);
+//    return itemSize;
+//}
+
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     return 0.0;
