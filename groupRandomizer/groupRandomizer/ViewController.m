@@ -11,12 +11,20 @@
 #import "NameController.h"
 #import "Name.h"
 
+static int numberOfPeopleInGroup = 2;
+
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIButton *randomizeButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic,assign) CGFloat screenHeight;
+@property (nonatomic,assign) CGFloat screenWidth;
+@property (nonatomic,assign) NSInteger arrayIndex;
+@property (weak, nonatomic) IBOutlet UIButton *fourButton;
+@property (weak, nonatomic) IBOutlet UIButton *threeButton;
+@property (weak, nonatomic) IBOutlet UIButton *twoButton;
 
 
 @end
@@ -30,6 +38,9 @@
     
     self.addButton.layer.cornerRadius = cornerRadius;
     self.randomizeButton.layer.cornerRadius = cornerRadius;
+    self.twoButton.layer.cornerRadius = cornerRadius;
+    self.threeButton.layer.cornerRadius = cornerRadius;
+    self.fourButton.layer.cornerRadius = cornerRadius;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
 
