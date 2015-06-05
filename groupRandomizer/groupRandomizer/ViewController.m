@@ -11,8 +11,6 @@
 #import "NameController.h"
 #import "Name.h"
 
-static int numberOfPeopleInGroup = 2;
-
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -22,6 +20,7 @@ static int numberOfPeopleInGroup = 2;
 @property (nonatomic,assign) CGFloat screenHeight;
 @property (nonatomic,assign) CGFloat screenWidth;
 @property (nonatomic,assign) NSInteger arrayIndex;
+@property (nonatomic,assign) NSInteger numberOfPeopleInGroup;
 @property (weak, nonatomic) IBOutlet UIButton *fourButton;
 @property (weak, nonatomic) IBOutlet UIButton *threeButton;
 @property (weak, nonatomic) IBOutlet UIButton *twoButton;
@@ -31,10 +30,17 @@ static int numberOfPeopleInGroup = 2;
 
 @implementation ViewController
 
+@synthesize screenHeight, screenWidth;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.numberOfPeopleInGroup = 2;
+    
     float cornerRadius = self.addButton.frame.size.height / 2;
+    
+    screenHeight = self.view.frame.size.height;
+    screenWidth = self.view.frame.size.width;
     
     self.addButton.layer.cornerRadius = cornerRadius;
     self.randomizeButton.layer.cornerRadius = cornerRadius;
@@ -61,20 +67,19 @@ static int numberOfPeopleInGroup = 2;
     [self.collectionView reloadData]; 
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    int screenWidth = self.view.frame.size.width;
-    
-    CGSize circleSize = CGSizeMake(screenWidth / 4, screenWidth / 4);
-    
-    return circleSize;
-}
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 //    
-//    CGSize itemSize = CGSizeMake((_screenWidth /numberOfPeopleInGroup) - 6 , ((_screenHeight - 64) / 5) / 2);
-//    return itemSize;
+//    CGSize circleSize = CGSizeMake(screenWidth / 4, screenWidth / 4);
+//    
+//    return circleSize;
 //}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGSize itemSize = CGSizeMake((screenWidth /self.numberOfPeopleInGroup) - 10 , ((screenHeight - 64) / 5) / 2);
+    
+    return itemSize;
+}
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
@@ -88,7 +93,7 @@ static int numberOfPeopleInGroup = 2;
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 
@@ -107,6 +112,8 @@ static int numberOfPeopleInGroup = 2;
     Name *name = [[NameController sharedInstance].names objectAtIndex:indexPath.item];
     
     cell.nameLabel.text = name.nameString;
+    
+    cell.nameLabel.frame = cell.bounds;
     
     return cell;
 }
@@ -135,7 +142,35 @@ static int numberOfPeopleInGroup = 2;
     
 }
 
+- (IBAction)groupsOfTwo:(id)sender {
+    
+    self.numberOfPeopleInGroup = 2;
+    [self.collectionView reloadData];
+    
+}
+
+- (IBAction)groupsOfThree:(id)sender {
+    
+    self.numberOfPeopleInGroup = 3;
+    [self.collectionView reloadData];
+    
+}
+
+- (IBAction)groupsOfFour:(id)sender {
+    
+    self.numberOfPeopleInGroup = 4;
+    [self.collectionView reloadData];
+    
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    return YES;
+}
+
+
 
 
 
 @end
+
+
