@@ -56,6 +56,8 @@
     
     [[NameController sharedInstance]addNameWithNameString:self.textField.text];
     
+    self.textField.text = @"";
+    
     [self.collectionView reloadData];
     
 }
