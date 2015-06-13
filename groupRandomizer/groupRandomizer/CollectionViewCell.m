@@ -32,6 +32,8 @@
         self.nameLabel.textAlignment = NSTextAlignmentCenter;
         self.nameLabel.font = [UIFont fontWithName:@"Chalkduster" size:12];
         self.nameLabel.layer.masksToBounds = YES;
+        self.nameLabel.layer.borderWidth = 3.0;
+        self.nameLabel.layer.borderColor = [[UIColor whiteColor]CGColor]; 
         [self addSubview:self.nameLabel];
 
     }

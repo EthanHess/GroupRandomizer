@@ -48,7 +48,7 @@
     self.threeButton.layer.cornerRadius = cornerRadius;
     self.fourButton.layer.cornerRadius = cornerRadius;
     
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor lightGrayColor];
 
 }
 
