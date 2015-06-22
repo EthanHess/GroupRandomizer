@@ -24,8 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fourButton;
 @property (weak, nonatomic) IBOutlet UIButton *threeButton;
 @property (weak, nonatomic) IBOutlet UIButton *twoButton;
-
-
+@property (nonatomic, strong) NSArray *arrayOfStudents;
 @end
 
 @implementation ViewController
@@ -33,10 +32,9 @@
 @synthesize screenHeight, screenWidth;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
     self.numberOfPeopleInGroup = 2;
-    
+    self.arrayOfStudents = [[NSArray alloc]initWithArray:[NameController sharedInstance].names];
     float cornerRadius = self.addButton.frame.size.height / 2;
     
     screenHeight = self.view.frame.size.height;
@@ -64,17 +62,11 @@
 
 - (IBAction)randomize:(id)sender {
     
-    [[NameController sharedInstance]shuffle:[NameController sharedInstance].names];
+    self.arrayOfStudents = [[NameController sharedInstance]shuffle:[NameController sharedInstance].names];
     
     [self.collectionView reloadData]; 
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    CGSize circleSize = CGSizeMake(screenWidth / 4, screenWidth / 4);
-//    
-//    return circleSize;
-//}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -98,20 +90,13 @@
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return [NameController sharedInstance].names.count;
-    
-}
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    Name *name = [[NameController sharedInstance].names objectAtIndex:indexPath.item];
+    Name *name = [self.arrayOfStudents objectAtIndex:indexPath.item];
     
     cell.nameLabel.text = name.nameString;
     
@@ -120,13 +105,21 @@
     return cell;
 }
 
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.arrayOfStudents.count;
+    
+}
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete Name?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-        Name *name = [[NameController sharedInstance].names objectAtIndex:indexPath.item];
+        Name *name = [self.arrayOfStudents objectAtIndex:indexPath.item];
         
         [[NameController sharedInstance]removeName:name];
         
@@ -166,6 +159,7 @@
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    
     return YES;
 }
 

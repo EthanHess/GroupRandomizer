@@ -65,6 +65,7 @@
         
     }
     
+//    self.names = newArray;
     return [NSArray arrayWithArray:newArray];
 }
 

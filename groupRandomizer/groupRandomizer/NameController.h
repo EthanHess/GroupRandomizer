@@ -11,7 +11,8 @@
 
 @interface NameController : NSObject
 
-@property (nonatomic, strong, readonly) NSArray *names;
+@property (nonatomic, strong) NSArray *names;
+@property (nonatomic, strong) NSArray *temporaryNames; 
 
 + (NameController *)sharedInstance;
 
@@ -19,6 +20,6 @@
 
 - (void)removeName:(Name *)name;
 
-- (NSArray *)shuffle:(NSArray *)array; 
+- (NSArray *)shuffle:(NSArray *)array;
 
 @end
