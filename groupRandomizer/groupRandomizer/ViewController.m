@@ -35,6 +35,7 @@
     [super viewDidLoad];    
     self.numberOfPeopleInGroup = 2;
     self.arrayOfStudents = [[NSArray alloc]initWithArray:[NameController sharedInstance].names];
+
     float cornerRadius = self.addButton.frame.size.height / 2;
     
     screenHeight = self.view.frame.size.height;
@@ -50,10 +51,16 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
+
 - (IBAction)addName:(id)sender {
     
     [[NameController sharedInstance]addNameWithNameString:self.textField.text];
-    
+    self.arrayOfStudents = [[NSArray alloc]initWithArray:[NameController sharedInstance].names];
     self.textField.text = @"";
     
     [self.collectionView reloadData];
@@ -122,7 +129,8 @@
         Name *name = [self.arrayOfStudents objectAtIndex:indexPath.item];
         
         [[NameController sharedInstance]removeName:name];
-        
+        self.arrayOfStudents = [[NSArray alloc]initWithArray:[NameController sharedInstance].names];
+
         [collectionView reloadData];
         
     }]];
